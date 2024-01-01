@@ -12,7 +12,7 @@ public class SpringMongoAppApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(SpringMongoAppApplication.class, args);
-	System.out.println("welcome to CI demo");
+	System.out.println("welcome to CI demo pipeline");
 	}
 
 }
