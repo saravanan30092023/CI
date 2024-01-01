@@ -9,7 +9,7 @@ public class SpringmysqlApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(SpringmysqlApplication.class, args);
-	   System.out.println("welcome");
+	   System.out.println("welcome to stackroute");
 
 	}
 

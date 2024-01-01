@@ -8,6 +8,7 @@ class SpringmysqlApplicationTests {
 
 	@Test
 	void contextLoads() {
+		assert(true);
 	}
 
 }
