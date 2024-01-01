@@ -1,22 +1,55 @@
 pipeline {
     agent any
+    environment {
+    mavenHome = tool 'mavenjenkins'
+    dockerHome = tool 'dockerjenkins'
+    PATH= "${mavenHome}/bin:${dockerHome}/bin:${PATH}"
+   }
     stages {
+        stage('Info'){
+                    steps {
+                            echo "Maven Home: ${mavenHome}"
+                            echo "Docker Home: ${dockerHome}"
+                            echo "$env.JOB_NAME"
+                            echo "$env.BUILD_NUMBER"
+                            echo "$env.BUILD_ID"
+                            echo "$env.BUILD_URL"
+
+
+
+                    }
+        }
+
+
         stage('compile'){
                     steps {
-                            echo 'compiling the code'
+                            sh "mvn clean compile"
 
                     }
         }
         stage('Test'){
                     steps {
-                            echo 'Testing the code'
+                            sh "mvn test"
                     }
         }
-        stage('Build'){
+        stage('Package'){
                     steps {
-                            echo 'Building the code'
+                            sh "mvn package -DskipTests"
                     }
         }
     }
+    post {
+          always{
+               echo "always"
+          }
+          success{
+               echo "success"
+          }
+          failure{
+               echo "failure"
+          }
+
+    }
 }
+
 
